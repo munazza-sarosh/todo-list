@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>to do list</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="hero">
+        <h1>to-do list</h1>
+        <div class="input-area">
+            <input type="text" id="todotext" name="todotext" placeholder="enter task">
+            <div id="demo"></div>
+        </div>
+    </div>
+    <script>
+
+        let addtask = document.getElementById("todotext")
+        let display = document.getElementById("demo")
+
+        let ul = document.createElement("ul")
+        display.appendChild(ul)
+
+        addtask.addEventListener("keydown", add)
+        function add(event) {
+
+            console.log(event);
+
+            if (event.key === "Enter") {
+
+                let input = document.createElement("input")
+                input.type = "checkbox"
+
+                let taskText = document.createElement("span")
+                taskText.textContent = "" + addtask.value + ""
+
+                let deleteBtn = document.createElement("button")
+                deleteBtn.textContent = "delete"
+
+                let editBtn = document.createElement("button")
+                editBtn.textContent = "edit"
+
+                let li = document.createElement("li")
+
+                li.appendChild(input)
+                // li.appendChild(document.createTextNode(" " + addtask.value))
+                li.appendChild(taskText)
+                li.appendChild(deleteBtn)
+                li.appendChild(editBtn)
+                // li.appendChild(display)
+
+                ul.appendChild(li)
+
+                addtask.value = ""
+                deleteBtn.addEventListener("click", function () {
+                    li.remove()
+                })
+
+                editBtn.addEventListener("click", function () {
+                    let newTask = prompt("Edit your task:", taskText.textContent)
+
+                    if (newTask !== null && newTask !== "") {
+                        taskText.textContent = " " + newTask + " "
+                    }
+                })
+            }
+        }
+    </script>
+</body>
+
+</html>
