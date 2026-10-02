@@ -2,6 +2,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    text-transform: capitalize;
     margin: 0px;
     min-height: 100vh;
     background: linear-gradient(to bottom, #607D8B, #0c1d25);
